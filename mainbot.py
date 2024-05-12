@@ -29,8 +29,17 @@ async def handler(event):
     async with bot.action(chat_id, 'typing'):
         message = event.message
         text = message.message
-        logging.info(f"Message received: {message}")
-        logging.info(f"mentioned in chat {chat_id}")
+        # logging.info(f"Message received: {message}")
+        # logging.info(f"mentioned in chat {chat_id}")
+
+        user_id = await event.get_sender()
+        user_id = user_id.id
+
+        if user_id not in config.allowed_users:
+            logging.warning(f"Invalid user {user_id} tried to access this bot: {event}")
+            # won't do anything just return
+            return
+        logging.info("User in whitelist")
 
         try:
             url_matches = re.findall(config.url_regex, text)
@@ -71,5 +80,3 @@ bot.start()
 actual_username = bot.loop.run_until_complete(start_up_tasks())
 bot.run_until_disconnected()
 
-# with bot:
-#     bot.loop.run_until_complete(main())

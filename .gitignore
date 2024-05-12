@@ -1,0 +1,5 @@
+*.pyc
+
+*.session
+images/*.png
+actual_config.py

@@ -1,3 +1,24 @@
+# Telegram Bot Web Screenshot
+
+A telegram bot to take screenshots of webpages using [Telethon](https://github.com/LonamiWebs/Telethon) and [Playwright](https://github.com/microsoft/playwright-python).  
+
+
+## Usage
+
+`/webcap <URL>`
+Will send you a screenshot of the first URL it find.  
+Must be a http/https url.  
+If not `http[s]://` in front, will prepend `https://` to the front.
+
+## Installation
+
+To do...
+
+## Example config file
+
+[`config.py`](config.py)
+
+```python
 from telethon.types import BotCommand
 
 # CHANGE BELOW
@@ -17,3 +38,4 @@ viewport={ 'width' : 1920, 'height' : 1080 }
 allowed_users=[
     123456789, # CHANGE TO YOUR USER IDs
 ]
+```
