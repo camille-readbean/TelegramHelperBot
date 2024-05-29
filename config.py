@@ -17,3 +17,4 @@ viewport={ 'width' : 1920, 'height' : 1080 }
 allowed_users=[
     123456789, # CHANGE TO YOUR USER IDs
 ]
+default_timeout=30000

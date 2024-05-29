@@ -32,14 +32,15 @@ async def handler(event):
         # logging.info(f"Message received: {message}")
         # logging.info(f"mentioned in chat {chat_id}")
 
-        user_id = await event.get_sender()
+        user = await event.get_sender()
         user_id = user_id.id
+        user_name = user_id.username
 
         if user_id not in config.allowed_users:
-            logging.warning(f"Invalid user {user_id} tried to access this bot: {event}")
+            logging.warning(f"Invalid user {user_name} {user_id} tried to access this bot: {event}")
             # won't do anything just return
             return
-        logging.info("User in whitelist")
+        logging.info(f"User in whitelist {user_name}")
 
         try:
             url_matches = re.findall(config.url_regex, text)
@@ -52,13 +53,13 @@ async def handler(event):
             logging.info(f"url matches: {url_matches}")
             url = url_matches[0][0].strip()
             # url  = message.media.url
-            await message.reply(f"Taking a pic of {url}")
+            # await message.reply(f"Taking a pic of {url}")
             file_name = await screenshot(url)
-            await message.reply(f"Screenshot successful",
+            await message.reply(f"[OK] Screenshot of `{url}` taken",
                                 file=file_name, force_document=False)
         except Exception as e:
             logging.exception(e)
-            await message.reply(f"Error: {e}")
+            await message.reply(f"[Error]: {e}")
 
 
 # update username in case it changed or something
