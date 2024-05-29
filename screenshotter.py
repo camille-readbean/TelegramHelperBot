@@ -29,9 +29,7 @@ async def screenshot(url):
         await page.evaluate("() => {document.body.style.zoom=0.8;}")
         file_name = f"images/{datetime.datetime.now().strftime("%Y-%m-%d %H %Y")} " \
             + f"{urlparse(page.url).hostname}.png"
-        path = Path('image')
-        if not Path('image').exists():
-            path.mkdir()
+        await page.wait_for_timeout(config.page_waittime)
         await page.screenshot(path=file_name)
         title = await page.title()
         logging.info("Screenshotted" + title)

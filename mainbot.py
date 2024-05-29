@@ -33,8 +33,8 @@ async def handler(event):
         # logging.info(f"mentioned in chat {chat_id}")
 
         user = await event.get_sender()
-        user_id = user_id.id
-        user_name = user_id.username
+        user_id = user.id
+        user_name = user.username
 
         if user_id not in config.allowed_users:
             logging.warning(f"Invalid user {user_name} {user_id} tried to access this bot: {event}")

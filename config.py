@@ -18,3 +18,4 @@ allowed_users=[
     123456789, # CHANGE TO YOUR USER IDs
 ]
 default_timeout=30000
+page_waittime=7000
