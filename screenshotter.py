@@ -11,7 +11,9 @@ from playwright.async_api import async_playwright
 
 async def screenshot(url):
     async with async_playwright() as p:
-        browser = await p.chromium.launch()
+        if config.browser not in ["chromium", "firefox", "webkit"]:
+            raise Exception("Error in config value, not supported browser")
+        browser = await getattr(p, config.browser).launch()
         logging.info("browser launched")
         browser = await browser.new_context(
             user_agent=config.user_agent,

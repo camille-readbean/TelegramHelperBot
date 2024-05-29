@@ -3,7 +3,7 @@ from telethon.types import BotCommand
 # CHANGE BELOW
 app_id='17349'
 app_hash='344583e45741c457fe1862106095a5eb'
-bot_token='CHANGE TO YOUR OWN TOEKN'
+bot_token='CHANGE TO YOUR OWN TOKEN'
 username='CHANGE TO YOUR USERNAME'
 command_word_web_img='CHANGE TO WHATEVER COMMAND WORD YOU WANNA USE, /<cmd word>'
 commands_description_list=[
@@ -19,3 +19,4 @@ allowed_users=[
 ]
 default_timeout=30000
 page_waittime=7000
+browser="firefox" # or "chromium" or "webkit"
